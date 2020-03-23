@@ -50,7 +50,6 @@ const Dashboard = ({ data }) => {
 		return inputTextEditor(props, props.field);
 	};
 
-	//checkbox
 	const checkboxEditor = (props, field) => {
 		return <Checkbox onChange={(e) => onEditorValueChange(props, e.target.checked)} checked={props.rowData[field]} />;
 	};
@@ -61,36 +60,6 @@ const Dashboard = ({ data }) => {
 
 	const checkboxTemplate = (rowData, column) => {
 		return <Checkbox checked={column.rowData[column.field]} />;
-	};
-
-	//dropdown
-	const dropdownCheckboxEditor = (props) => {
-		let opt = [ { label: 'Yes', value: true }, { label: 'No', value: false } ];
-
-		return (
-			<Dropdown
-				value={props.value[props.rowIndex][props.field]}
-				options={opt}
-				onChange={(e) => onEditorValueChange(props, e.value)}
-				style={{ width: '100%' }}
-				placeholder="Select primary_al"
-			/>
-		);
-	};
-
-	const dropdownCheckboxTemplate = (rowData, column) => {
-		let opt = [ { label: 'Yes', value: true }, { label: 'No', value: false } ];
-
-		return (
-			<Dropdown
-				optionLabel="label"
-				optionValue="value"
-				value={column.rowData[column.field]}
-				options={opt}
-				style={{ width: '100%' }}
-				placeholder="Select primary_al"
-			/>
-		);
 	};
 
 	return (
@@ -135,13 +104,7 @@ const Dashboard = ({ data }) => {
 						header="Primary EL"
 						style={{ height: '3.5em' }}
 					/>
-					{/* <Column
-						field="primary_al"
-						body={dropdownCheckboxTemplate}
-						header="primary_al"
-						editor={dropdownCheckboxEditor}
-						style={{ height: '3.5em' }}
-					/> */}
+					<button>Delete</button>
 				</DataTable>
 			</div>
 		</div>
