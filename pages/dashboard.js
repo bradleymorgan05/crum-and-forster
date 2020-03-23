@@ -14,14 +14,14 @@ class Dashboard extends Component {
 
     constructor() {
         super();
-        this.state = {
-					data: []
-        };
+        this.state = {data: []};
 			
         this.textEditor = this.textEditor.bind(this);
+        this.postData = this.postData.bind(this);
         this.dateTemplate = this.dateTemplate.bind(this);
         this.calendarEditor = this.calendarEditor.bind(this);
         this.requiredValidator = this.requiredValidator.bind(this);
+        this.onEditorValueChange = this.onEditorValueChange.bind(this);
     }
 
     async componentDidMount() {
@@ -33,12 +33,9 @@ class Dashboard extends Component {
         updatedData[props.rowIndex][props.field] = value;
         this.setState({data: updatedData});
     }
+
     dateTemplate(rowData, column) {
         return moment(rowData['effective_date']).format("MM-DD-YYYY");
-    }
-
-    inputTextEditor(props, field) {
-        return <InputText type="text" value={props.rowData[field]} onChange={(e) => this.onEditorValueChange(props, e.target.value)} />;
     }
 
     textEditor(props) {
@@ -46,7 +43,7 @@ class Dashboard extends Component {
         return this.inputTextEditor(props, props.field);
 	}
 		
-	postData = () => {
+	postData(){
 		axios.post(`${baseUrl}policies`, this.state.data)
 			.then(res => {
 				console.log(res);
