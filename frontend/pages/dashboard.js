@@ -5,12 +5,13 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
-import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
 var moment = require('moment');
 const baseUrl = 'http://127.0.0.1:3001';
 
 const Dashboard = ({ data }) => {
 	const [ cell, setCell ] = useState({});
+	const [ policies, setPolicies ] = useState(data);
 
 	const requiredValidator = (props) => {
 		let value = props.rowData[props.field];
@@ -62,6 +63,19 @@ const Dashboard = ({ data }) => {
 		return <Checkbox checked={column.rowData[column.field]} />;
 	};
 
+	const deleteButton = (rowData, column) => {
+		return <Button label="Danger" onClick={() => handleDelete(rowData, column)} className="p-button-danger" />;
+	};
+
+	const handleDelete = (rowData, column) => {
+		const id = rowData.id;
+		const newData = { is_deleted: true };
+		updatePolicy(id, newData).then((data) => {
+			console.log(data);
+			const res = getPolicies().then((r) => setPolicies(r));
+		});
+	};
+
 	return (
 		<div>
 			<div>
@@ -104,7 +118,7 @@ const Dashboard = ({ data }) => {
 						header="Primary EL"
 						style={{ height: '3.5em' }}
 					/>
-					<button>Delete</button>
+					<Column field="delete_policy" body={deleteButton} header="delete" style={{ height: '3.5em' }} />
 				</DataTable>
 			</div>
 		</div>
