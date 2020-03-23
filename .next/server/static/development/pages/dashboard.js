@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2024,10 +2024,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./pages/dashboard-nx.js":
-/*!*******************************!*\
-  !*** ./pages/dashboard-nx.js ***!
-  \*******************************/
+/***/ "./pages/dashboard.js":
+/*!****************************!*\
+  !*** ./pages/dashboard.js ***!
+  \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2045,19 +2045,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(primereact_column__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/inputtext */ "primereact/inputtext");
 /* harmony import */ var primereact_inputtext__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primereact/dropdown */ "primereact/dropdown");
-/* harmony import */ var primereact_dropdown__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var primereact_growl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primereact/growl */ "primereact/growl");
-/* harmony import */ var primereact_growl__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primereact_growl__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _dashboard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard */ "./pages/dashboard.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
-var _jsxFileName = "C:\\Users\\bitingcold\\Documents\\Development\\policy-crud\\pages\\dashboard-nx.js";
+/* harmony import */ var primereact_growl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primereact/growl */ "primereact/growl");
+/* harmony import */ var primereact_growl__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(primereact_growl__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var primereact_calendar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! primereact/calendar */ "primereact/calendar");
+/* harmony import */ var primereact_calendar__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(primereact_calendar__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
+var _jsxFileName = "C:\\Users\\bitingcold\\Documents\\Development\\policy-crud\\pages\\dashboard.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -2070,54 +2067,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- //import {CarService} from '../service/CarService';
 
 const baseUrl = 'http://127.0.0.1:4000/';
 
-class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
+class Dashboard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor() {
     super();
 
     _defineProperty(this, "postData", () => {
-      console.log(this.state.data);
-      axios__WEBPACK_IMPORTED_MODULE_9___default.a.post(`${baseUrl}policies`, this.state.data).then(res => {
+      axios__WEBPACK_IMPORTED_MODULE_8___default.a.post(`${baseUrl}policies`, this.state.data).then(res => {
         console.log(res);
-        console.log(111); //console.log(res.data);
       });
     });
 
     this.state = {
       data: []
     };
-    this.clonedCars = {};
-    this.data;
     this.textEditor = this.textEditor.bind(this);
-    this.yearEditor = this.yearEditor.bind(this);
-    this.brandEditor = this.brandEditor.bind(this);
-    this.colorEditor = this.colorEditor.bind(this);
+    this.dateTemplate = this.dateTemplate.bind(this);
+    this.calendarEditor = this.calendarEditor.bind(this);
     this.requiredValidator = this.requiredValidator.bind(this);
-    this.editorForRowEditing = this.editorForRowEditing.bind(this);
-    this.onRowEditorValidator = this.onRowEditorValidator.bind(this);
-    this.onRowEditInit = this.onRowEditInit.bind(this);
-    this.onRowEditSave = this.onRowEditSave.bind(this);
-    this.onRowEditCancel = this.onRowEditCancel.bind(this);
-  } // static async getInitialProps({ Component, router, ctx }) {
-  // 	let pageProps = {}
-  // 	if (Component.getInitialProps) {
-  // 		pageProps = await Component.getInitialProps(ctx)
-  // 	}
-  // 	/* your own logic */
-  // 	return { pageProps }
-  // }
-
+  }
 
   async componentDidMount() {
     const res = isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(`${baseUrl}policies`).then(r => r.json()).then(data => this.setState({
       data: data
     }));
   }
-  /* Cell Editing */
-
 
   onEditorValueChange(props, value) {
     let updatedData = [...props.value];
@@ -2125,6 +2101,10 @@ class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     this.setState({
       data: updatedData
     });
+  }
+
+  dateTemplate(rowData, column) {
+    return moment__WEBPACK_IMPORTED_MODULE_9___default()(rowData['effective_date']).format("MM-DD-YYYY");
   }
 
   inputTextEditor(props, field) {
@@ -2135,146 +2115,42 @@ class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65,
+        lineNumber: 41,
         columnNumber: 16
       }
     });
   }
 
   textEditor(props) {
-    console.log(props);
     this.postData();
     return this.inputTextEditor(props, props.field);
   }
 
-  yearEditor(props) {
-    return this.inputTextEditor(props, 'year');
-  }
-
-  brandEditor(props) {
-    let brands = [{
-      label: 'Audi',
-      value: 'Audi'
-    }, {
-      label: 'BMW',
-      value: 'BMW'
-    }, {
-      label: 'Fiat',
-      value: 'Fiat'
-    }, {
-      label: 'Ford',
-      value: 'Ford'
-    }, {
-      label: 'Honda',
-      value: 'Honda'
-    }, {
-      label: 'Jaguar',
-      value: 'Jaguar'
-    }, {
-      label: 'Mercedes',
-      value: 'Mercedes'
-    }, {
-      label: 'Renault',
-      value: 'Renault'
-    }, {
-      label: 'VW',
-      value: 'VW'
-    }, {
-      label: 'Volvo',
-      value: 'Volvo'
-    }];
-    return __jsx(primereact_dropdown__WEBPACK_IMPORTED_MODULE_6__["Dropdown"], {
-      value: props.value[props.rowIndex].brand,
-      options: brands,
-      onChange: e => this.onEditorValueChange(props, e.value),
-      style: {
-        width: '100%'
-      },
-      placeholder: "Select a City",
+  calendarEditor(props, field) {
+    return __jsx(primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__["InputText"], {
+      type: "text",
+      value: moment__WEBPACK_IMPORTED_MODULE_9___default()(props.rowData[field]).format("MM/DD/YYYY"),
+      onChange: e => this.onEditorValueChange(props, e.target.value),
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 104,
-        columnNumber: 13
+        lineNumber: 57,
+        columnNumber: 10
       }
     });
-  }
-
-  colorEditor(props) {
-    return this.inputTextEditor(props, 'color');
   }
 
   requiredValidator(props) {
     let value = props.rowData[props.field];
     return value && value.length > 0;
   }
-  /* Row Editing */
-
-
-  onEditorValueChangeForRowEditing(props, value) {
-    let updatedCars = [...props.value];
-    updatedCars[props.rowIndex][props.field] = value;
-    this.setState({
-      cars2: updatedCars
-    });
-  }
-
-  editorForRowEditing(props, field) {
-    return __jsx(primereact_inputtext__WEBPACK_IMPORTED_MODULE_5__["InputText"], {
-      type: "text",
-      value: props.rowData[field],
-      onChange: e => this.onEditorValueChangeForRowEditing(props, e.target.value),
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 126,
-        columnNumber: 16
-      }
-    });
-  }
-
-  onRowEditorValidator(rowData) {
-    let value = rowData['brand'];
-    return value.length > 0;
-  }
-
-  onRowEditInit(event) {
-    this.clonedCars[event.data.vin] = _objectSpread({}, event.data);
-  }
-
-  onRowEditSave(event) {
-    if (this.onRowEditorValidator(event.data)) {
-      delete this.clonedCars[event.data.vin];
-      this.growl.show({
-        severity: 'success',
-        summary: 'Success',
-        detail: 'Car is updated'
-      });
-    } else {
-      this.growl.show({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Brand is required'
-      });
-    }
-  }
-
-  onRowEditCancel(event) {
-    let cars = [...this.state.cars2];
-    cars[event.index] = this.clonedCars[event.data.vin];
-    delete this.clonedCars[event.data.vin];
-    this.setState({
-      cars2: cars
-    });
-  }
 
   render() {
-    console.log(this.state.data);
     return __jsx("div", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 160,
+        lineNumber: 67,
         columnNumber: 13
       }
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_0___default.a, {
@@ -2282,52 +2158,45 @@ class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 161,
-        columnNumber: 20
+        lineNumber: 68,
+        columnNumber: 15
       }
     }, __jsx("a", {
       title: "New Policy",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 162,
-        columnNumber: 5
+        lineNumber: 68,
+        columnNumber: 30
       }
     }, "Create new policy")), __jsx("div", {
       className: "content-section implementation",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 166,
+        lineNumber: 69,
         columnNumber: 17
       }
-    }, __jsx(primereact_growl__WEBPACK_IMPORTED_MODULE_7__["Growl"], {
+    }, __jsx(primereact_growl__WEBPACK_IMPORTED_MODULE_6__["Growl"], {
       ref: el => this.growl = el,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 167,
+        lineNumber: 70,
         columnNumber: 21
       }
-    }), __jsx("h3", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 169,
-        columnNumber: 21
-      }
-    }, "Cell Editing"), __jsx(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__["DataTable"], {
+    }), __jsx(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__["DataTable"], {
       value: this.state.data,
       editable: true,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 170,
+        lineNumber: 71,
         columnNumber: 21
       }
     }, __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "first_name",
-      header: "first_name",
+      header: "First Name",
       editor: this.textEditor,
       editorValidator: this.requiredValidator,
       style: {
@@ -2336,207 +2205,78 @@ class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 171,
+        lineNumber: 72,
         columnNumber: 25
       }
     }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "last_name",
-      header: "last_name",
-      editor: this.yearEditor,
+      header: "Last Name",
+      editor: this.textEditor,
+      editorValidator: this.requiredValidator,
       style: {
         height: '3.5em'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 172,
+        lineNumber: 73,
         columnNumber: 25
       }
     }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "email_address",
-      header: "email_address",
-      editor: this.brandEditor,
+      header: "Email Address",
+      editor: this.textEditor,
+      editorValidator: this.requiredValidator,
       style: {
         height: '3.5em'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 173,
+        lineNumber: 74,
         columnNumber: 25
       }
     }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "phone_number",
-      header: "phone_number",
-      editor: this.colorEditor,
+      header: "Phone Number",
+      editor: this.textEditor,
+      editorValidator: this.requiredValidator,
       style: {
         height: '3.5em'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 174,
+        lineNumber: 75,
         columnNumber: 25
       }
     }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "company_name",
-      header: "company_name",
-      editor: this.colorEditor,
+      header: "Company Name",
+      editor: this.textEditor,
+      editorValidator: this.requiredValidator,
       style: {
         height: '3.5em'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 175,
+        lineNumber: 76,
         columnNumber: 25
       }
     }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
       field: "effective_date",
-      header: "effective_date",
-      editor: this.colorEditor,
+      body: this.dateTemplate,
+      header: "Effective Date",
+      editor: this.calendarEditor,
+      editorValidator: this.requiredValidator,
       style: {
         height: '3.5em'
       },
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 176,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "status",
-      header: "status",
-      editor: this.colorEditor,
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 177,
-        columnNumber: 25
-      }
-    })), __jsx("h3", {
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 180,
-        columnNumber: 21
-      }
-    }, "Row Editing"), __jsx(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__["DataTable"], {
-      value: this.state.data,
-      editMode: "row",
-      rowEditorValidator: this.onRowEditorValidator,
-      onRowEditInit: this.onRowEditInit,
-      onRowEditSave: this.onRowEditSave,
-      onRowEditCancel: this.onRowEditCancel,
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 181,
-        columnNumber: 21
-      }
-    }, __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "first_name",
-      header: "first_name",
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 182,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "last_name",
-      header: "last_name",
-      editor: props => this.editorForRowEditing(props, 'year'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 183,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "email_address",
-      header: "email_address",
-      editor: props => this.editorForRowEditing(props, 'brand'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 184,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "phone_number",
-      header: "phone_number",
-      editor: props => this.editorForRowEditing(props, 'color'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 185,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "company_name",
-      header: "company_name",
-      editor: props => this.editorForRowEditing(props, 'color'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 186,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "effective_date",
-      header: "effective_date",
-      editor: props => this.editorForRowEditing(props, 'color'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 187,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      field: "status",
-      header: "status",
-      editor: props => this.editorForRowEditing(props, 'color'),
-      style: {
-        height: '3.5em'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 188,
-        columnNumber: 25
-      }
-    }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-      rowEditor: true,
-      style: {
-        'width': '70px',
-        'textAlign': 'center'
-      },
-      __self: this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 189,
+        lineNumber: 77,
         columnNumber: 25
       }
     }))));
@@ -2544,176 +2284,18 @@ class DashboardNX extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (DashboardNX);
+/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
 
 /***/ }),
 
-/***/ "./pages/dashboard.js":
-/*!****************************!*\
-  !*** ./pages/dashboard.js ***!
-  \****************************/
-/*! exports provided: default, getServerSideProps */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Dashboard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { return getServerSideProps; });
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! primereact/datatable */ "primereact/datatable");
-/* harmony import */ var primereact_datatable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! primereact/column */ "primereact/column");
-/* harmony import */ var primereact_column__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(primereact_column__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var primereact_columngroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primereact/columngroup */ "primereact/columngroup");
-/* harmony import */ var primereact_columngroup__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(primereact_columngroup__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var primereact_row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! primereact/row */ "primereact/row");
-/* harmony import */ var primereact_row__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(primereact_row__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "C:\\Users\\bitingcold\\Documents\\Development\\policy-crud\\pages\\dashboard.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-
-
-const baseUrl = 'http://localhost:4000/';
-
-
-
-
-function Dashboard({
-  data
-}) {
-  return __jsx("div", {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 3
-    }
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    href: "/",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 4
-    }
-  }, __jsx("a", {
-    title: "New Policy",
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14,
-      columnNumber: 5
-    }
-  }, "Create new policy")), __jsx(primereact_datatable__WEBPACK_IMPORTED_MODULE_3__["DataTable"], {
-    style: {
-      border: '1px'
-    },
-    value: data,
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17,
-      columnNumber: 4
-    }
-  }, __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "first_name",
-    header: "First Name",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 5
-    }
-  }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "last_name",
-    header: "Last Name",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 19,
-      columnNumber: 5
-    }
-  }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "email_address",
-    header: "Email Address",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20,
-      columnNumber: 5
-    }
-  }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "phone_number",
-    header: "Phone Number",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21,
-      columnNumber: 5
-    }
-  }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "company_name",
-    header: "Company Name",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22,
-      columnNumber: 5
-    }
-  }), __jsx(primereact_column__WEBPACK_IMPORTED_MODULE_4__["Column"], {
-    field: "effective_date",
-    header: "Effective Date",
-    style: {
-      height: '3.5em'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 5
-    }
-  })));
-}
-async function getServerSideProps() {
-  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(`${baseUrl}policies`);
-  const data = await res.json();
-  return {
-    props: {
-      data
-    }
-  };
-}
-
-/***/ }),
-
-/***/ 5:
-/*!*************************************!*\
-  !*** multi ./pages/dashboard-nx.js ***!
-  \*************************************/
+/***/ 4:
+/*!**********************************!*\
+  !*** multi ./pages/dashboard.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\bitingcold\Documents\Development\policy-crud\pages\dashboard-nx.js */"./pages/dashboard-nx.js");
+module.exports = __webpack_require__(/*! C:\Users\bitingcold\Documents\Development\policy-crud\pages\dashboard.js */"./pages/dashboard.js");
 
 
 /***/ }),
@@ -2740,6 +2322,28 @@ module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
+
+/***/ }),
+
+/***/ "primereact/calendar":
+/*!**************************************!*\
+  !*** external "primereact/calendar" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("primereact/calendar");
+
+/***/ }),
+
 /***/ "primereact/column":
 /*!************************************!*\
   !*** external "primereact/column" ***!
@@ -2751,17 +2355,6 @@ module.exports = require("primereact/column");
 
 /***/ }),
 
-/***/ "primereact/columngroup":
-/*!*****************************************!*\
-  !*** external "primereact/columngroup" ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("primereact/columngroup");
-
-/***/ }),
-
 /***/ "primereact/datatable":
 /*!***************************************!*\
   !*** external "primereact/datatable" ***!
@@ -2770,17 +2363,6 @@ module.exports = require("primereact/columngroup");
 /***/ (function(module, exports) {
 
 module.exports = require("primereact/datatable");
-
-/***/ }),
-
-/***/ "primereact/dropdown":
-/*!**************************************!*\
-  !*** external "primereact/dropdown" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("primereact/dropdown");
 
 /***/ }),
 
@@ -2803,17 +2385,6 @@ module.exports = require("primereact/growl");
 /***/ (function(module, exports) {
 
 module.exports = require("primereact/inputtext");
-
-/***/ }),
-
-/***/ "primereact/row":
-/*!*********************************!*\
-  !*** external "primereact/row" ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("primereact/row");
 
 /***/ }),
 
@@ -2862,4 +2433,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=dashboard-nx.js.map
+//# sourceMappingURL=dashboard.js.map

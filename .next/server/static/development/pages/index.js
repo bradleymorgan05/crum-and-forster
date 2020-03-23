@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2038,42 +2038,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "C:\\Users\\bitingcold\\Documents\\Development\\policy-crud\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
 const baseUrl = 'http://localhost:4000/';
-
 class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
-
-    _defineProperty(this, "postData", object => {
-      console.log(JSON.stringify(object)); // axios.post(`${baseUrl}policies`, object)
-      // .then(res => {
-      // 	console.log(res);
-      // 	console.log(111);
-      // 	//console.log(res.data);
-      // })
-
-      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${baseUrl}policies`, {
-        method: 'post',
-        body: object,
-        headers: new Headers({
-          'content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-          'Accept': 'application/json, application/xml, text/plain, text/html, *.*'
-        })
-      });
-    });
-
     this.state = {
       first_name: '',
       last_name: '',
@@ -2084,7 +2059,8 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       status: 'Pending'
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this); // this.postData = this.postData.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.postData = this.postData.bind(this);
   }
 
   handleChange(event) {
@@ -2094,7 +2070,6 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   }
 
   handleSubmit(event) {
-    // alert('A name was submitted: ' + this.state.first_name);
     event.preventDefault();
     const policy = {
       first_name: this.state.first_name,
@@ -2105,12 +2080,18 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       effective_date: this.state.effective_date,
       status: 'Submitted'
     };
-    this.postData(policy); // axios.post(`http://localhost:', { user })
-    // .then(res => {
-    // 	console.log(res);
-    // 	console.log(res.data);
-    // })
-    // console.log('current policy', policy);
+    this.postData(policy);
+  }
+
+  postData(object) {
+    isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(`${baseUrl}policies`, {
+      method: 'post',
+      body: object,
+      headers: new Headers({
+        'content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+        'Accept': 'application/json, application/xml, text/plain, text/html, *.*'
+      })
+    });
   }
 
   render() {
@@ -2118,7 +2099,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70,
+        lineNumber: 55,
         columnNumber: 4
       }
     }, __jsx("div", {
@@ -2129,22 +2110,22 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71,
+        lineNumber: 56,
         columnNumber: 5
       }
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_0___default.a, {
-      href: "dashboard-nx",
+      href: "dashboard",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72,
+        lineNumber: 57,
         columnNumber: 6
       }
     }, __jsx("a", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 73,
+        lineNumber: 58,
         columnNumber: 7
       }
     }, "Dashboard"))), __jsx("input", {
@@ -2160,7 +2141,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 78,
+        lineNumber: 61,
         columnNumber: 5
       }
     }), __jsx("input", {
@@ -2176,7 +2157,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 85,
+        lineNumber: 68,
         columnNumber: 5
       }
     }), __jsx("input", {
@@ -2192,7 +2173,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 86,
+        lineNumber: 69,
         columnNumber: 5
       }
     }), __jsx("input", {
@@ -2208,7 +2189,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 87,
+        lineNumber: 70,
         columnNumber: 5
       }
     }), __jsx("input", {
@@ -2224,7 +2205,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88,
+        lineNumber: 71,
         columnNumber: 5
       }
     }), __jsx("input", {
@@ -2240,14 +2221,14 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89,
+        lineNumber: 72,
         columnNumber: 5
       }
     }), __jsx("div", {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90,
+        lineNumber: 73,
         columnNumber: 5
       }
     }, " ", __jsx("button", {
@@ -2260,7 +2241,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90,
+        lineNumber: 73,
         columnNumber: 11
       }
     }, "Submit")));
@@ -2270,7 +2251,7 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -2279,17 +2260,6 @@ class NameForm extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 module.exports = __webpack_require__(/*! C:\Users\bitingcold\Documents\Development\policy-crud\pages\index.js */"./pages/index.js");
 
-
-/***/ }),
-
-/***/ "axios":
-/*!************************!*\
-  !*** external "axios" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
 
 /***/ }),
 

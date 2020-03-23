@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import axios from 'axios';
-const baseUrl = 'http://localhost:4000/';
 import fetch from 'isomorphic-unfetch';
+const baseUrl = 'http://localhost:4000/';
 
 export default class NameForm extends React.Component {
 	constructor(props) {
@@ -19,7 +18,7 @@ export default class NameForm extends React.Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		// this.postData = this.postData.bind(this)
+		this.postData = this.postData.bind(this)
 	}
 
 	handleChange(event) {
@@ -27,7 +26,6 @@ export default class NameForm extends React.Component {
 	}
 
 	handleSubmit(event) {
-		// alert('A name was submitted: ' + this.state.first_name);
 		event.preventDefault();
 		const policy = {
 			first_name: this.state.first_name,
@@ -39,22 +37,9 @@ export default class NameForm extends React.Component {
 			status: 'Submitted'
 		};
 		this.postData(policy)
-		// axios.post(`http://localhost:', { user })
-		// .then(res => {
-		// 	console.log(res);
-		// 	console.log(res.data);
-		// })
-		// console.log('current policy', policy);
 	}
 		
-	postData = (object) => {
-		console.log(JSON.stringify(object))
-		// axios.post(`${baseUrl}policies`, object)
-		// .then(res => {
-		// 	console.log(res);
-		// 	console.log(111);
-		// 	//console.log(res.data);
-		// })
+	postData(object){
 		fetch(`${baseUrl}policies`, {
 			method: 'post',
 			body: object,
@@ -69,12 +54,10 @@ export default class NameForm extends React.Component {
 		return (
 			<div>
 				<div style={{ margin: '5px', padding: '3px'  }}>
-					<Link href="dashboard-nx" >
+					<Link href="dashboard" >
 						<a>Dashboard</a>
 					</Link>
 				</div>
-
-				{/* <form onSubmit={this.handleSubmit}> */}
 				<input
 					type="text"
 					placeholder="First name"
@@ -88,7 +71,6 @@ export default class NameForm extends React.Component {
 				<input type="text" placeholder="Company name" name="company_name" style={{ margin: '5px', padding: '3px', borderRadius: '5px' }} onChange={this.handleChange} />
 				<input type="text" placeholder="Effective date MM-DD-YYYY" name="effective_date" style={{ margin: '5px', padding: '3px', borderRadius: '5px' }} onChange={this.handleChange} />
 				<div> <button style={{ margin: '5px', padding: '3px', borderRadius: '5px' }} onClick={this.handleSubmit}>Submit</button></div>
-				
 			</div>
 		);
 	}
